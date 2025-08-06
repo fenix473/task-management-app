@@ -1,0 +1,22 @@
+{
+  "name": "task-management-app",
+  "version": "1.0.0",
+  "description": "Task Management App with React frontend and Node.js backend",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "cd backend && node server.js",
+    "build": "cd frontend && npm install && npm run build",
+    "postinstall": "cd backend && npm install && cd ../frontend && npm install"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fenix473/task-management-app.git"
+  },
+  "keywords": ["task-management", "react", "nodejs", "express", "sqlite"],
+  "author": "Fenix473",
+  "license": "MIT"
+} 

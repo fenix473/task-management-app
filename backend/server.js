@@ -12,6 +12,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Serve static files from React build
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+}
+
 // Database setup
 const dbPath = process.env.NODE_ENV === 'production' ? '/app/data/tasks.db' : './tasks.db';
 const db = new sqlite3.Database(dbPath, (err) => {
@@ -159,6 +164,13 @@ app.delete('/api/tasks/:id', (req, res) => {
     res.json({ message: 'Task deleted successfully' });
   });
 });
+
+// Serve React app for any non-API routes
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+  });
+}
 
 // Start server
 app.listen(PORT, () => {
