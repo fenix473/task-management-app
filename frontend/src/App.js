@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes, FaChartBar } from 'react-icons/fa';
+import Dashboard from './Dashboard';
 import './App.css';
 
 const API_BASE_URL = 'http://localhost:5000/api';
@@ -15,6 +16,7 @@ function App() {
   });
   const [editingTask, setEditingTask] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [currentView, setCurrentView] = useState('tasks'); // 'tasks' or 'dashboard'
 
   useEffect(() => {
     fetchTasks();
@@ -100,12 +102,26 @@ function App() {
     );
   }
 
+  if (currentView === 'dashboard') {
+    return <Dashboard onBackToTasks={() => setCurrentView('tasks')} />;
+  }
+
   return (
     <div className="App">
       <div className="container">
         <header className="header">
-          <h1>Task Management App</h1>
-          <p>Organize your tasks efficiently</p>
+          <div className="header-content">
+            <div className="header-text">
+              <h1>Task Management App</h1>
+              <p>Organize your tasks efficiently</p>
+            </div>
+            <button 
+              onClick={() => setCurrentView('dashboard')} 
+              className="dashboard-button"
+            >
+              <FaChartBar /> Dashboard
+            </button>
+          </div>
         </header>
 
         {/* Add New Task Form */}
