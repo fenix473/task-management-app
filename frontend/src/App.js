@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes, FaChartBar } from 'react-icons/fa';
 import Dashboard from './Dashboard';
+import config from './config';
 import './App.css';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = config.API_BASE_URL;
 
 function App() {
   const [tasks, setTasks] = useState([]);

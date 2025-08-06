@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaCheckCircle, FaCalendarDay, FaChartBar, FaArrowLeft } from 'react-icons/fa';
+import config from './config';
 import './Dashboard.css';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = config.API_BASE_URL;
 
 function Dashboard({ onBackToTasks }) {
   const [tasks, setTasks] = useState([]);

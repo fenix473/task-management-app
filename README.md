@@ -50,6 +50,7 @@ task-management-app/
 ### Prerequisites
 - Node.js (v14 or higher)
 - npm or yarn
+- Docker and Docker Compose (for containerized deployment)
 
 ### Backend Setup
 
@@ -93,6 +94,32 @@ The backend will start on `http://localhost:5000` and automatically create the S
    ```
 
 The frontend will start on `http://localhost:3000` and automatically open in your browser.
+
+## 🐳 Docker Deployment (Recommended)
+
+For easy deployment and hosting, use Docker:
+
+### Quick Start with Docker
+```bash
+# Clone the repository
+git clone https://github.com/fenix473/task-management-app.git
+cd task-management-app
+
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Access the application
+# Frontend: http://localhost
+# Backend API: http://localhost:5000/api
+```
+
+### Production Deployment
+```bash
+# Deploy to production
+docker-compose -f docker-compose.yml up -d --build
+```
+
+For detailed Docker deployment instructions, see [DOCKER_README.md](DOCKER_README.md).
 
 ## API Endpoints
 

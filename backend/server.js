@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Database setup
-const db = new sqlite3.Database('./tasks.db', (err) => {
+const dbPath = process.env.NODE_ENV === 'production' ? '/app/data/tasks.db' : './tasks.db';
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database:', err.message);
   } else {
